@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MedTime</title>
+</head>
+
+<body>
+  <div class="container">
+    <div class="cadastro-form">
+      <h1>Cadastro de Usuário</h1>
+      <form id="formCadastro">
+        <div class="form-group">
+          <label for="nome">Nome:</label>
+          <input type="text" id="nome" name="nome" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+          <label for="senha">Senha:</label>
+          <input type="password" id="senha" name="senha" required>
+        </div>
+        <div class="form-group">
+          <label for="dataNascimento">Senha:</label>
+          <input type="date" id="dataNascimento" name="dataNascimento" required>
+        </div>
+        <div class="form-group">
+          <button type="submit">Cadastrar</button>
+        </div>
+        <div class="form-link">
+          <p>Já tem uma conta? <a href="index.html">Faça login</a></p>
+        </div>
+      </form>
+      <div id="mensagem" class="mensagem"></div>
+    </div>
+  </div>
+
+  <script src="assets/js/api.js"></script>
+  <script src="assets/js/cadastro.js"></script>
+</body>
+
+</html>

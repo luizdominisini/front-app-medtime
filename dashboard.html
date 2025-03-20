@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MedTime</title>
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <h1>Dashboard</h1>
+      <div class="user-info">
+        <span id="userName">Olá, </span>
+        <button id="logout">Sair</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="users-section">
+        <h2>Lista de Usuários</h2>
+        <div class="users-container">
+          <table id="usersTable">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Data de Nascimento</th>
+              </tr>
+            </thead>
+            <tbody id="usersList">
+              <!--USUARIOS SERAO CARREGADOS AQUI-->
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="./assets/js/api.js"></script>
+  <script src="./assets/js/auth.js"></script>
+  <script src="./assets/js/dashboard.js"></script>
+</body>
+
+</html>
