@@ -60,7 +60,24 @@ const api = {
         Authorization: `Bearer ${auth.obterToken()}`,
       },
     });
-    
+
     return response.json();
+  },
+
+  deletarUsuario: async (user_id) => {
+    try {
+      const response = await fetch(`${API_URL}/auth/deletar`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${auth.obterToken()}`,
+        },
+        body: JSON.stringify({ user_id }),
+      });
+      return response.json();
+    } catch (error) {
+      console.error("Erro ao deletar usuário: ", error);
+      throw error;
+    }
   },
 };

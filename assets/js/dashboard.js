@@ -20,8 +20,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   try {
-    const {users} = await api.listarUsuarios();
-    console.log(users);
+    const { users } = await api.listarUsuarios();
 
     if (Array.isArray(users)) {
       usersListElement.innerHTML = "";
@@ -49,7 +48,21 @@ document.addEventListener("DOMContentLoaded", async () => {
         tdDataNascimento.textContent = usuario.dataNascimento;
         tr.appendChild(tdDataNascimento);
 
-        usersListElement.appendChild(tr)
+        const tdDeletar = document.createElement("td");
+        const btnDeletar = document.createElement("button");
+        btnDeletar.textContent = "Deletar";
+
+        btnDeletar.addEventListener("click", async () => {
+          const response = await api.deletarUsuario(usuario.id);
+          if (response.sucess) {
+            tr.remove();
+          }
+        });
+
+        tdDeletar.appendChild(btnDeletar);
+        tr.appendChild(tdDeletar);
+
+        usersListElement.appendChild(tr);
       });
     } else {
       usersListElement.innerHTML =
