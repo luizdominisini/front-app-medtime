@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           window.location.href = "dashboard.html";
         }, 3000);
       } else {
-        mensagemDiv.className = "message error";
+        mensagemDiv.className = "mensagem error";
         mensagemDiv.textContent =
           response.mensagem ||
           "Erro ao fazer login. Verifique suas credenciais.";

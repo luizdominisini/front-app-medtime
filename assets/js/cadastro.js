@@ -23,7 +23,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (response.sucesso == true) {
         mensagemDiv.className = "mensagem sucesso";
-        mensagemDiv.textContent = `${response.mensagem}`;
+        mensagemDiv.textContent =
+          "Usuário cadastrado com sucesso! Redirecionando...";
 
         formCadastro.reset();
 
@@ -31,8 +32,8 @@ document.addEventListener("DOMContentLoaded", () => {
           window.location.href = "index.html";
         }, 3000);
       } else {
-        mensagemDiv.className = "mensagem erro";
-        mensagemDiv.textContent = `${response.mensagem}`;
+        mensagemDiv.className = "mensagem error";
+        mensagemDiv.textContent = `${response.message}`;
       }
     } catch (error) {
       mensagemDiv.className = "message error";

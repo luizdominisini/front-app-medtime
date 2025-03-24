@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const userNameElement = document.getElementById("userName");
   const usersListElement = document.getElementById("usersList");
   const logout = document.getElementById("logout");
+  const data = new Date();
 
   const autenticado = await auth.estaAutenticado();
 
@@ -45,11 +46,16 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         //coluna data de nascimento
         const tdDataNascimento = document.createElement("td");
-        tdDataNascimento.textContent = usuario.dataNascimento;
+        tdDataNascimento.textContent = data.toLocaleDateString("pt-BR", {
+          day: "2-digit",
+          month: "2-digit",
+          year: "numeric",
+        });
         tr.appendChild(tdDataNascimento);
 
         const tdDeletar = document.createElement("td");
         const btnDeletar = document.createElement("button");
+        btnDeletar.className = "btnDeletar";
         btnDeletar.textContent = "Deletar";
 
         btnDeletar.addEventListener("click", async () => {
