@@ -1,5 +1,10 @@
+body {
+  background-color: rgb(26, 24, 24);
+}
+
 header {
   display: flex;
+  color: white;
   justify-content: space-between;
   align-items: center;
   padding: 20px 0px;
