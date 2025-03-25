@@ -4,37 +4,43 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MedTime - Login</title>
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/login.css">
-  <title>MedTime</title>
 </head>
 
 <body>
   <div class="container">
     <div class="login-form">
       <h1 class="form-h1-degrade">Login</h1>
+
       <form id="formLogin">
         <div class="form-group">
           <label for="email">Email:</label>
-          <input type="email" id="email" name="email" required>
+          <input type="email" id="email" name="email" autocomplete="email" required>
         </div>
+
         <div class="form-group">
           <label for="senha">Senha:</label>
-          <input type="password" id="senha" name="senha" required>
+          <input type="password" id="senha" name="senha" autocomplete="current-password" required>
         </div>
+
         <div class="form-group">
           <button type="submit">Entrar</button>
         </div>
+
         <div class="form-link">
           <p>Não tem uma conta? <a href="cadastro.html">Cadastre-se</a></p>
         </div>
+
+        <div id="mensagem" class="mensagem" aria-live="polite"></div>
       </form>
-      <div id="mensagem" class="mensagem"></div>
     </div>
   </div>
 
-  <script src="assets/js/api.js"></script>
-  <script src="assets/js/auth.js"></script>
+  <script src="assets/js/services/api.js"></script>
+  <script src="assets/js/services/auth.service.js"></script>
+  <script src="assets/js/utils/auth.js"></script>
   <script src="assets/js/login.js"></script>
 </body>
 

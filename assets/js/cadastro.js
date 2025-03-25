@@ -2,44 +2,49 @@ document.addEventListener("DOMContentLoaded", () => {
   const formCadastro = document.getElementById("formCadastro");
   const mensagemDiv = document.getElementById("mensagem");
 
+  const exibirMensagem = (mensagem, tipo = "info") => {
+    mensagemDiv.className = `mensagem ${tipo}`;
+    mensagemDiv.textContent = mensagem;
+  };
+
+  const obterDadosDoFormulario = () => ({
+    nome: document.getElementById("nome").value.trim(),
+    email: document.getElementById("email").value.trim(),
+    dataNascimento: document.getElementById("dataNascimento").value,
+    senha: document.getElementById("senha").value,
+  });
+
+  const redirecionarParaLogin = () => {
+    setTimeout(() => {
+      window.location.href = "index.html";
+    }, 3000);
+  };
+
   formCadastro.addEventListener("submit", async (event) => {
     event.preventDefault();
+    exibirMensagem("Processando...", "info");
 
-    const nome = document.getElementById("nome").value;
-    const email = document.getElementById("email").value;
-    const dataNascimento = document.getElementById("dataNascimento").value;
-    const senha = document.getElementById("senha").value;
-
-    mensagemDiv.className = "mensagem";
-    mensagemDiv.textContent = "Processando...";
+    const dadosUsuario = obterDadosDoFormulario();
 
     try {
-      const response = await api.cadastrarUsuario({
-        nome,
-        email,
-        dataNascimento,
-        senha,
-      });
+      const response = await authService.cadastrarUsuario(dadosUsuario);
 
-      if (response.sucesso == true) {
-        mensagemDiv.className = "mensagem sucesso";
-        mensagemDiv.textContent =
-          "Usuário cadastrado com sucesso! Redirecionando...";
-
+      if (response.sucesso) {
+        exibirMensagem(
+          "Usuário cadastrado com sucesso! Redirecionando...",
+          "sucesso"
+        );
         formCadastro.reset();
-
-        setTimeout(() => {
-          window.location.href = "index.html";
-        }, 3000);
+        redirecionarParaLogin();
       } else {
-        mensagemDiv.className = "mensagem error";
-        mensagemDiv.textContent = `${response.message}`;
+        exibirMensagem(response.message || "Erro no cadastro.", "error");
       }
     } catch (error) {
-      mensagemDiv.className = "message error";
-      mensagemDiv.textContent =
-        "Erro ao cadastrar usuário. Tente novamente mais tarde.";
       console.error("Erro no cadastro:", error);
+      exibirMensagem(
+        "Erro ao cadastrar usuário. Tente novamente mais tarde.",
+        "error"
+      );
     }
   });
 });
